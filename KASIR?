@@ -1,0 +1,58 @@
+daftar = ["Ayam goreng", "Ikan goreng", "Ayam bakar", "Ikan Bakar", "Es teh","Teh anget"]
+harga = ["14000", "14000", "16000", "16000", "4000", "4000"]
+buat = []
+harg1 = 0
+hars =[]
+welcome = ("=======================================\nMENU PENAMBAH MASA HIDUP SEMENTARA\n=======================================\n")
+from datetime import date
+tanggal = date.today()
+hari = tanggal.strftime("%A")
+
+
+print (welcome)
+for insd in range(len(daftar)):
+        print (insd+1,"\b. ", daftar[insd],"(Rp", f"\b{harga[insd]}","\b)")
+print ("")
+print ('untuk berhenti ketik "sudah" dan ketik "0" jika ingin mereset pesanan')
+while (True):
+    pesanan = input('Pesan nomor berapa? : ')
+    if pesanan == ("sudah"):
+        print ("\nMenu yang di pesan")
+        for nos in range(len(buat)):
+            print (nos+1,"\b. ", buat[nos], "(Rp", f"\b{hars[nos]}","\b)")
+        ribuan = f"{harg1:,}"
+        print (f"Total harga Rp{ribuan}")
+        break
+    elif "0"<= pesanan < "a":
+        pesanan = int(pesanan)
+    else :
+            pesanan = -1
+
+    if 0 < pesanan < 7:
+        pesanan1 = int(pesanan)-1
+        total = (daftar[pesanan1])
+        buat +={total}
+        harg = int(harga[pesanan1])
+        harg1 += harg
+        hars += {harg}
+
+    elif pesanan == 0:
+        print ("\nBerhasil di reset\n")
+        print (welcome)
+        buat = []
+        harg1 = 0
+        for insd in range(len(daftar)):
+           print (insd+1,"\b. ", daftar[insd],"(Rp", f"\b{harga[insd]}","\b)")
+    else :
+        print ("Pesanan yang anda masukkan salah")
+
+if hari == ("Saturday"):
+    hari = ("Sabtu")
+    print  (f"\nkarena hari ini hari {hari} maka akan diskon 10%.")
+    ohe = (f"{(harg1-(0.1*harg1)):,}")
+    print (f"Jadi total harganya Rp{ohe}")
+elif hari == ("Sunday"):
+    hari = ("Minggu")
+    print  (f"\nkarena hari ini hari {hari} maka akan diskon 25%.")
+    ohe = (f"{(harg1-(0.25*harg1)):,}")
+    print (f"Jadi total harganya Rp{ohe}")
